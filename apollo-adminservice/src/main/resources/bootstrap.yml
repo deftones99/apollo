@@ -1,15 +1,18 @@
 eureka:
-  instance:
-    hostname: ${hostname:localhost}
-    preferIpAddress: true
-    status-page-url-path: /info
-    health-check-url-path: /health
   client:
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:8080/eureka/
+      defaultZone: http://localhost:1025/eureka/
     healthcheck:
       enabled: true
-    eurekaServiceUrlPollIntervalSeconds: 60
+
+  instance:
+    prefer-ip-address: true
+    status-page-url-path: /info
+    health-check-url-path: /health
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 20
+
+
 
 management:
   health:
